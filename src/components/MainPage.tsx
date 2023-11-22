@@ -52,7 +52,7 @@ const Mainpage = () => {
           <h3>Data: {closestCollectionDate} grudzień</h3>
         </>
       ) : (
-        <h2>Brak danych o odbiorze śmieci w tym miesiącu.</h2>
+        <h2>Brak danych o odbiorze śmieci w tym miesiącu</h2>
       )}
     </>
   );
