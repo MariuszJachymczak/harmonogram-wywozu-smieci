@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { schedule } from "../data/schedule";
+import "./styling/MainPage.css";
 
 const Mainpage = () => {
   const [closestWasteType, setClosestWasteType] = useState<string | null>(null);
@@ -44,17 +45,20 @@ const Mainpage = () => {
 
   return (
     <>
-      <h1>Następny odbiór śmieci:</h1>
-      {closestWasteType && closestCollectionDate !== null ? (
-        <>
-          <h2>Rodzaj śmieci: {closestWasteType}</h2>
-          <h3>
-            Data: {closestCollectionDate} {formattedMonth}
-          </h3>
-        </>
-      ) : (
-        <h2>Brak danych o odbiorze śmieci w tym miesiącu</h2>
-      )}
+      <div className="main-container">
+        <div>
+          <div>
+            Następny odbiór śmieci: {closestCollectionDate} {formattedMonth}
+          </div>
+          {closestWasteType && closestCollectionDate !== null ? (
+            <>
+              <div>Rodzaj śmieci: {closestWasteType}</div>
+            </>
+          ) : (
+            <h2>Brak danych o odbiorze śmieci w tym miesiącu</h2>
+          )}
+        </div>
+      </div>
     </>
   );
 };
