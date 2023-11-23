@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { schedule } from "../data/schedule";
 import "./styling/MainPage.css";
+import MainForm from "./form/MainForm";
 
 const Mainpage = () => {
   const [closestWasteType, setClosestWasteType] = useState<string | null>(null);
@@ -23,7 +24,9 @@ const Mainpage = () => {
       let closestType = null;
 
       Object.entries(monthSchedule).forEach(([type, dates]) => {
-        const futureDates = dates.map(Number).filter((date) => date >= day);
+        const futureDates = dates
+          .map(Number)
+          .filter((date: number) => date >= day);
 
         if (futureDates.length > 0) {
           const minDate = Math.min(...futureDates);
@@ -59,6 +62,7 @@ const Mainpage = () => {
           )}
         </div>
       </div>
+      <MainForm />
     </>
   );
 };
