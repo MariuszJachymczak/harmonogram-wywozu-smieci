@@ -18,15 +18,17 @@ const Mainpage = () => {
     const day = currentDate.getDate();
     setWhatMonth(currentDate);
 
-    const monthSchedule = schedule[currentMonth];
+    // Pobierz harmonogram dla Pietrzykowic
+    const pietrzykowiceSchedule = schedule["Pietrzykowice"];
+    const monthSchedule = pietrzykowiceSchedule[currentMonth];
+
     if (monthSchedule) {
       let closestDate: number | null = null;
       let closestType = null;
 
       Object.entries(monthSchedule).forEach(([type, dates]) => {
-        const futureDates = dates
-          .map(Number)
-          .filter((date: number) => date >= day);
+        const numericDates = dates.map((date) => parseInt(date, 10));
+        const futureDates = numericDates.filter((date) => date >= day);
 
         if (futureDates.length > 0) {
           const minDate = Math.min(...futureDates);

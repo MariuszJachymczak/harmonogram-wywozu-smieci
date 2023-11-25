@@ -1,10 +1,10 @@
-import MainPage from "./components/MainPage";
+import WasteDisposal from "./components/form/WasteDisposal";
 
 function App() {
   return (
-    <div>
-      <MainPage />
-    </div>
+    <>
+      <WasteDisposal />
+    </>
   );
 }
 
