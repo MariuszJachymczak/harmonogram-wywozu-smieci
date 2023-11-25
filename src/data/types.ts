@@ -1,5 +1,7 @@
 export type ScheduleType = {
-  [key: string]: {
-    [type: string]: string[];
+  [city: string]: {
+    [month: string]: {
+      [wasteType: string]: string[];
+    };
   };
 };
