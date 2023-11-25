@@ -1,5 +1,9 @@
 import styles from "./../styling/WasteDisposal.module.scss";
 import { schedule } from "../../data/schedule";
+import { format } from "date-fns";
+
+const today = new Date();
+const test = format(today, "yyy-MM-dd");
 
 const WasteDisposal: React.FC = () => {
   return (
@@ -20,9 +24,9 @@ const WasteDisposal: React.FC = () => {
             ))}
           </div>
         ))}
+        <h5>{test}</h5>
       </div>
     </>
   );
 };
-
 export default WasteDisposal;
