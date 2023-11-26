@@ -1,10 +1,10 @@
 import { ScheduleType } from "./types";
 
-export const schedule: ScheduleType = {
+const schedule: ScheduleType = {
   Pietrzykowice: {
     listopad: {
-      Plastik: ["5", "19"],
-      Makulatura: ["12"],
+      Plastik: ["5", "19", "26", "28"],
+      Makulatura: ["12", "30"],
       Szklo: ["31"],
     },
     grudzien: {
@@ -14,3 +14,5 @@ export const schedule: ScheduleType = {
     },
   },
 };
+
+export default schedule;

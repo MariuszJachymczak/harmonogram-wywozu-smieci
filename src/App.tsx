@@ -1,4 +1,4 @@
-import WasteDisposal from "./components/form/WasteDisposal";
+import WasteDisposal from "./components/form/WasteDisposal/WasteDisposal";
 
 function App() {
   return (
