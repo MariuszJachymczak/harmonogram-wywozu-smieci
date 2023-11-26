@@ -1,13 +1,13 @@
-// src/components/WasteDisposal/Month.tsx
-
 import React from "react";
 import WasteType from "./WasteType";
 
-const Month: React.FC<{
+interface MonthProps {
   month: string;
   wasteTypes: Record<string, string[]>;
   year: string;
-}> = ({ month, wasteTypes, year }) => {
+}
+
+const Month: React.FC<MonthProps> = ({ month, wasteTypes, year }) => {
   if (!month) return null;
   return (
     <div>
