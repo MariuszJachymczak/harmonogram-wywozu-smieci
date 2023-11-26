@@ -5,3 +5,7 @@ export type ScheduleType = {
     };
   };
 };
+
+export type MonthNamesType = {
+  [key: string]: number;
+};
