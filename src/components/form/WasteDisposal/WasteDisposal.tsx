@@ -1,10 +1,16 @@
-// src/components/WasteDisposal/WasteDisposal.tsx
-
 import React, { useState, useEffect } from "react";
 import calculateDifferencesInDays from "../WasteDisposal/CalculateDifferenceInDays";
 import styles from "./styling/WasteDisposal.module.scss";
-import { format } from "date-fns";
+import { closestTo, format, isAfter, isSameDay } from "date-fns";
 import { pl } from "date-fns/locale";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import allWasted from "../../../assets/background/pexels-daniel-absi-952670.jpg";
+import paperWasteImage from "../../../assets/paper.png";
+import plasticWasteImage from "../../../assets/plastic.png";
+import glassWasteImage from "../../../assets/glass.png";
 
 interface WasteCollection {
   city: string;
@@ -29,22 +35,48 @@ const WasteDisposal: React.FC = () => {
   }, [currentMonth]);
 
   return (
-    <div className={styles.container}>
-      {upcomingWasteCollections.map(
-        ({ city, wasteType, date, differenceInDays }, index) => (
-          <div key={index}>
-            <h2>{city}</h2>
-            <p>Typ odpadów: {wasteType}</p>
-            <p>Data odbioru: {date.toLocaleDateString()}</p>
-            <p>
-              Dni do odbioru:
-              {differenceInDays === 0
-                ? "Odbiór już dzisiaj"
-                : `odbiór za ${differenceInDays} dni`}
-            </p>
-          </div>
-        )
-      )}
+    <div className={styles.img}>
+      <div className={styles.wasteDisposal}>
+        {upcomingWasteCollections.map(
+          ({ city, wasteType, date, differenceInDays }, index) => (
+            <Card
+              sx={{ margin: 2, maxWidth: 200, borderRadius: "16px" }}
+              key={index}
+            >
+              <CardMedia
+                component="img"
+                alt="wastes symbol"
+                height="150"
+                image={
+                  wasteType === "Makulatura"
+                    ? paperWasteImage
+                    : wasteType === "Plastik"
+                    ? plasticWasteImage
+                    : wasteType === "Szklo"
+                    ? glassWasteImage
+                    : allWasted
+                }
+              />
+              <CardContent sx={{ maxWidth: 145 }}>
+                <Typography gutterBottom variant="h6" component="div">
+                  {city}
+                </Typography>
+                <Typography variant="body1" color="text.primary">
+                  Typ odpadów: {wasteType}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Data odbioru: {date.toLocaleDateString()}
+                </Typography>
+                <Typography variant="body2" color="text.primary">
+                  {differenceInDays === 0
+                    ? "Odbiór już dzisiaj"
+                    : `Odbiór za ${differenceInDays} dni.`}
+                </Typography>
+              </CardContent>
+            </Card>
+          )
+        )}
+      </div>
     </div>
   );
 };

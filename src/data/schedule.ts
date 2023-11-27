@@ -3,9 +3,9 @@ import { ScheduleType } from "./types";
 const schedule: ScheduleType = {
   Pietrzykowice: {
     listopad: {
-      Plastik: ["5", "19", "26", "28"],
+      Plastik: ["5", "19", "26"],
       Makulatura: ["12", "30"],
-      Szklo: ["31"],
+      Szklo: ["29"],
     },
     grudzien: {
       Plastik: ["5", "19"],

@@ -1,4 +1,3 @@
-// calculateDifferencesInDays.ts
 import { differenceInDays } from "date-fns";
 import schedule from "../../../data/schedule";
 import monthNames from "../../../data/months";
