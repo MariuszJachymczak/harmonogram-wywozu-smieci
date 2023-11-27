@@ -1,4 +1,12 @@
-.container {
+.img {
+  background-image: url("../../../../assets/background/pexels-daniel-absi-952670.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+}
+
+.wasteDisposal {
   display: flex;
   justify-content: center;
   align-items: center;
