@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import calculateDifferencesInDays from "../WasteDisposal/CalculateDifferenceInDays";
 import styles from "./styling/WasteDisposal.module.scss";
-import { closestTo, format, isAfter, isSameDay } from "date-fns";
+import { format } from "date-fns";
 import { pl } from "date-fns/locale";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -42,6 +42,11 @@ const WasteDisposal: React.FC = () => {
             <Card
               sx={{ margin: 2, maxWidth: 200, borderRadius: "16px" }}
               key={index}
+              className={
+                differenceInDays === 0
+                  ? styles.highlightedCardToday
+                  : styles.normalCard
+              }
             >
               <CardMedia
                 component="img"
