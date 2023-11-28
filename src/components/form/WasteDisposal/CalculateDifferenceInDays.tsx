@@ -1,9 +1,9 @@
-import { differenceInDays } from "date-fns";
+import { differenceInDays, startOfDay } from "date-fns";
 import schedule from "../../../data/schedule";
 import monthNames from "../../../data/months";
 
 const calculateDifferencesInDays = () => {
-  const today = new Date();
+  const today = startOfDay(new Date());
   const currentYear = today.getFullYear();
   const differences: {
     city: string;
@@ -17,10 +17,8 @@ const calculateDifferencesInDays = () => {
       const monthIndex = monthNames[month.toLowerCase()];
       Object.entries(wasteTypes).forEach(([wasteType, dates]) => {
         dates.forEach((dateString) => {
-          const wasteDate = new Date(
-            currentYear,
-            monthIndex,
-            parseInt(dateString, 10)
+          const wasteDate = startOfDay(
+            new Date(currentYear, monthIndex, parseInt(dateString, 10))
           );
           const difference = differenceInDays(wasteDate, today);
 
