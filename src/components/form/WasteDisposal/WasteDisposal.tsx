@@ -25,7 +25,6 @@ const WasteDisposal: React.FC = () => {
   >([]);
 
   const currentMonth = format(new Date(), "MMMM", { locale: pl }).toLowerCase();
-  console.log(currentMonth, "Current Month");
 
   useEffect(() => {
     const now = new Date();
@@ -41,7 +40,6 @@ const WasteDisposal: React.FC = () => {
     );
 
     setUpcomingWasteCollections(filteredData);
-    console.log(filteredData, "filtered data");
   }, [currentMonth]);
 
   return (

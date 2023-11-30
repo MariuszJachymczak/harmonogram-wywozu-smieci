@@ -34,7 +34,6 @@ const calculateDifferencesInDays = () => {
       });
     });
   });
-  console.log(differences, "Difference in Days");
   return differences;
 };
 
