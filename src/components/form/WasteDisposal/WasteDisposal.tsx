@@ -7,10 +7,10 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import allWasted from "../../../assets/background/pexels-daniel-absi-952670.jpg";
-import paperWasteImage from "../../../assets/paper.png";
-import plasticWasteImage from "../../../assets/plastic.png";
-import glassWasteImage from "../../../assets/glass.png";
+import allWasted from "../../../assets/background/pexels-daniel-absi-952670.webp";
+import paperWasteImage from "../../../assets/paper.webp";
+import plasticWasteImage from "../../../assets/plastic.webp";
+import glassWasteImage from "../../../assets/glass.webp";
 
 interface WasteCollection {
   city: string;
