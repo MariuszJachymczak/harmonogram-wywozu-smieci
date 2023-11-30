@@ -25,13 +25,23 @@ const WasteDisposal: React.FC = () => {
   >([]);
 
   const currentMonth = format(new Date(), "MMMM", { locale: pl }).toLowerCase();
+  console.log(currentMonth, "Current Month");
 
   useEffect(() => {
-    const filteredData = calculateDifferencesInDays().filter(
+    const now = new Date();
+    const nextMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+    const nextMonthName = format(nextMonth, "MMMM", {
+      locale: pl,
+    }).toLowerCase();
+
+    let filteredData = calculateDifferencesInDays().filter(
       ({ date }) =>
-        format(date, "MMMM", { locale: pl }).toLowerCase() === currentMonth
+        format(date, "MMMM", { locale: pl }).toLowerCase() === currentMonth ||
+        format(date, "MMMM", { locale: pl }).toLowerCase() === nextMonthName
     );
+
     setUpcomingWasteCollections(filteredData);
+    console.log(filteredData, "filtered data");
   }, [currentMonth]);
 
   return (
