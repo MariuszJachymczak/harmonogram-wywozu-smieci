@@ -1,9 +1,9 @@
 .img {
-  background-image: url("../../../../assets/background/pexels-daniel-absi-952670.jpg");
+  background-image: url("../../../../assets/background/pexels-daniel-absi-952670.webp");
   background-size: cover;
-  background-repeat: no-repeat;
   background-position: center;
   width: 100%;
+  min-height: 100vh;
 }
 
 .wasteDisposal {
@@ -17,4 +17,31 @@
 }
 .normalCard {
   border: 10px solid rgb(125, 33, 230);
+}
+.modalContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modalContent {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  min-width: 200px;
+  max-width: 80%;
+  height: auto;
+}
+.card {
+  margin: 2;
+  max-width: 200;
+  border-radius: "16px";
+}
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
