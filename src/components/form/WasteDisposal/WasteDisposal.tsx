@@ -12,6 +12,7 @@ import paperWasteImage from "../../../assets/paper.webp";
 import plasticWasteImage from "../../../assets/plastic.webp";
 import glassWasteImage from "../../../assets/glass.webp";
 import { Button, Modal } from "@mui/material";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 interface WasteCollection {
   city: string;
@@ -54,7 +55,11 @@ const WasteDisposal: React.FC = () => {
       <div>
         <div className={styles.img}>
           <div className={styles.button}>
-            <Button variant="contained" onClick={toggleModal}>
+            <Button
+              variant="contained"
+              onClick={toggleModal}
+              endIcon={<ArrowForwardIcon />}
+            >
               Pokaż harmonogram odpadów zmieszanych
             </Button>
           </div>
