@@ -13,6 +13,7 @@ import plasticWasteImage from "../../../assets/plastic.webp";
 import glassWasteImage from "../../../assets/glass.webp";
 import { Button, Modal } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import schedule from "../../../data/schedule";
 
 interface WasteCollection {
   city: string;
@@ -25,14 +26,19 @@ const WasteDisposal: React.FC = () => {
   const [upcomingWasteCollections, setUpcomingWasteCollections] = useState<
     WasteCollection[]
   >([]);
-
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedCity, setSelectedCity] = useState("Pcim");
+  const [cities, setCities] = useState<string[]>([]);
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
 
   const currentMonth = format(new Date(), "MMMM", { locale: pl }).toLowerCase();
+
+  useEffect(() => {
+    setCities(Object.keys(schedule));
+  }, []);
 
   useEffect(() => {
     const now = new Date();
@@ -54,6 +60,16 @@ const WasteDisposal: React.FC = () => {
     <>
       <div>
         <div className={styles.img}>
+          <select
+            value={selectedCity}
+            onChange={(e) => setSelectedCity(e.target.value)}
+          >
+            {cities.map((city) => (
+              <option key={city} value={city}>
+                {city}
+              </option>
+            ))}
+          </select>
           <div className={styles.button}>
             <Button
               variant="contained"
