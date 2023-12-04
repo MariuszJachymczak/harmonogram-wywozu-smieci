@@ -27,7 +27,7 @@ const WasteDisposal: React.FC = () => {
     WasteCollection[]
   >([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedCity, setSelectedCity] = useState("test");
+  const [selectedCity, setSelectedCity] = useState("Wybierz Miasto");
   const [cities, setCities] = useState<string[]>([]);
 
   const toggleModal = () => {
@@ -77,7 +77,7 @@ const WasteDisposal: React.FC = () => {
               variant="contained"
               onClick={toggleModal}
               endIcon={<ArrowForwardIcon />}
-              disabled={selectedCity === "test"}
+              disabled={selectedCity === "Wybierz Miasto"}
             >
               Pokaż harmonogram odpadów zmieszanych
             </Button>
