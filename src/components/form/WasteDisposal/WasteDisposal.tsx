@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import calculateDifferencesInDays from "../WasteDisposal/CalculateDifferenceInDays";
+import calculateDifferencesInDays from "./CalculateDifferenceInDays";
 import styles from "./styling/WasteDisposal.module.scss";
 import { format } from "date-fns";
 import { pl } from "date-fns/locale";
@@ -27,7 +27,7 @@ const WasteDisposal: React.FC = () => {
     WasteCollection[]
   >([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedCity, setSelectedCity] = useState("Pcim");
+  const [selectedCity, setSelectedCity] = useState("test");
   const [cities, setCities] = useState<string[]>([]);
 
   const toggleModal = () => {
@@ -48,13 +48,14 @@ const WasteDisposal: React.FC = () => {
     }).toLowerCase();
 
     let filteredData = calculateDifferencesInDays().filter(
-      ({ date }) =>
-        format(date, "MMMM", { locale: pl }).toLowerCase() === currentMonth ||
-        format(date, "MMMM", { locale: pl }).toLowerCase() === nextMonthName
+      ({ city, date }) =>
+        city === selectedCity &&
+        (format(date, "MMMM", { locale: pl }).toLowerCase() === currentMonth ||
+          format(date, "MMMM", { locale: pl }).toLowerCase() === nextMonthName)
     );
 
     setUpcomingWasteCollections(filteredData);
-  }, [currentMonth]);
+  }, [currentMonth, selectedCity]);
 
   return (
     <>
@@ -64,6 +65,7 @@ const WasteDisposal: React.FC = () => {
             value={selectedCity}
             onChange={(e) => setSelectedCity(e.target.value)}
           >
+            <option>Wybierz Miasto</option>
             {cities.map((city) => (
               <option key={city} value={city}>
                 {city}
@@ -75,6 +77,7 @@ const WasteDisposal: React.FC = () => {
               variant="contained"
               onClick={toggleModal}
               endIcon={<ArrowForwardIcon />}
+              disabled={selectedCity === "test"}
             >
               Pokaż harmonogram odpadów zmieszanych
             </Button>
