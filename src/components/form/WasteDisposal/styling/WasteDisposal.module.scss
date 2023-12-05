@@ -1,29 +1,41 @@
 .img {
-  background-image: url("../../../../assets/background/pexels-daniel-absi-952670.webp");
+  background-image: url("../../../../assets/background/paula-vermeulen-_f2m3mEkaaU-unsplash.jpg");
   background-size: cover;
   background-position: center;
   width: 100%;
   min-height: 100vh;
+  filter: brightness(0.8);
 }
 
-.wasteDisposal {
+.buttonContainer {
   display: flex;
+  justify-content: center;
+  align-items: bottom;
+  height: 100vh;
+}
+
+.centerContainer {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
+
 .highlightedCardToday {
   border: 10px solid rgb(33, 230, 33);
 }
+
 .normalCard {
-  border: 10px solid rgb(125, 33, 230);
+  border: 10px solid rgb(33, 36, 230);
 }
+
 .modalContainer {
   display: flex;
   align-items: center;
   justify-content: center;
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(166, 190, 174, 0.3);
 }
 
 .modalContent {
@@ -38,13 +50,4 @@
   margin: 2;
   max-width: 200;
   border-radius: "16px";
-}
-.button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
-
-.select {
 }
