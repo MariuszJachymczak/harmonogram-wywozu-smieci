@@ -7,11 +7,18 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import allWasted from "../../../assets/background/pexels-daniel-absi-952670.webp";
+import allWasted from "../../../assets/background/paula-vermeulen-_f2m3mEkaaU-unsplash.jpg";
 import paperWasteImage from "../../../assets/paper.webp";
 import plasticWasteImage from "../../../assets/plastic.webp";
 import glassWasteImage from "../../../assets/glass.webp";
-import { Button, Modal } from "@mui/material";
+import {
+  Button,
+  Modal,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+} from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import schedule from "../../../data/schedule";
 
@@ -27,7 +34,7 @@ const WasteDisposal: React.FC = () => {
     WasteCollection[]
   >([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedCity, setSelectedCity] = useState("test");
+  const [selectedCity, setSelectedCity] = useState("Wybierz Miasto");
   const [cities, setCities] = useState<string[]>([]);
 
   const toggleModal = () => {
@@ -59,89 +66,107 @@ const WasteDisposal: React.FC = () => {
 
   return (
     <>
-      <div>
-        <div className={styles.img}>
-          <select
-            value={selectedCity}
-            onChange={(e) => setSelectedCity(e.target.value)}
-          >
-            <option>Wybierz Miasto</option>
-            {cities.map((city) => (
-              <option key={city} value={city}>
-                {city}
-              </option>
-            ))}
-          </select>
-          <div className={styles.button}>
-            <Button
-              variant="contained"
-              onClick={toggleModal}
-              endIcon={<ArrowForwardIcon />}
-              disabled={selectedCity === "test"}
-            >
-              Pokaż harmonogram odpadów zmieszanych
-            </Button>
+      <div className={styles.img}>
+        <div className={styles.centerContainer}>
+          <div>
+            <FormControl variant="filled" sx={{ m: 1, minWidth: 200 }}>
+              <InputLabel
+                sx={{
+                  fontWeight: "bold",
+                  fontSize: "20px",
+                }}
+                size="small"
+              >
+                Wybierz Miasto
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-autowidth-label"
+                id="demo-simple-select-autowidth"
+                value={selectedCity}
+                onChange={(e) => setSelectedCity(e.target.value)}
+                label="city"
+              >
+                {cities.map((city) => (
+                  <MenuItem key={city} value={city}>
+                    {city}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
           </div>
-          <Modal
-            open={isModalOpen}
-            onClose={toggleModal}
-            className={styles.modalContainer}
+          <Button
+            color="info"
+            variant="outlined"
+            onClick={toggleModal}
+            endIcon={<ArrowForwardIcon />}
+            disabled={selectedCity === "Wybierz Miasto"}
           >
-            <div className={styles.modalContent}>
-              {upcomingWasteCollections.map(
-                ({ city, wasteType, date, differenceInDays }, index) => (
-                  <Card
-                    sx={{
-                      margin: 2,
-                      maxWidth: 200,
-                      borderRadius: "16px",
-                      flex: 1,
-                      flexBasis: 150,
-                    }}
-                    key={index}
-                    className={
-                      differenceInDays === 0
-                        ? styles.highlightedCardToday
-                        : styles.normalCard
-                    }
-                  >
-                    <CardMedia
-                      component="img"
-                      alt="wastes symbol"
-                      height="150"
-                      image={
-                        wasteType === "Makulatura"
-                          ? paperWasteImage
-                          : wasteType === "Plastik"
-                          ? plasticWasteImage
-                          : wasteType === "Szklo"
-                          ? glassWasteImage
-                          : allWasted
-                      }
-                    />
-                    <CardContent sx={{ maxWidth: 145 }}>
-                      <Typography gutterBottom variant="h6" component="div">
-                        {city}
-                      </Typography>
-                      <Typography variant="body1" color="text.primary">
-                        Typ odpadów: {wasteType}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        Data odbioru: {date.toLocaleDateString()}
-                      </Typography>
-                      <Typography variant="body2" color="text.primary">
-                        {differenceInDays === 0
-                          ? "Odbiór już dzisiaj"
-                          : `Odbiór za ${differenceInDays} dni.`}
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                )
-              )}
-            </div>
-          </Modal>
+            Odpady Selektywne
+          </Button>
         </div>
       </div>
+      <Modal
+        open={isModalOpen}
+        onClose={toggleModal}
+        className={styles.modalContainer}
+      >
+        <div className={styles.modalContent}>
+          {upcomingWasteCollections.map(
+            ({ city, wasteType, date, differenceInDays }, index) => (
+              <Card
+                sx={{
+                  margin: 2,
+                  maxWidth: 200,
+                  borderRadius: "16px",
+                  flex: 1,
+                  flexBasis: 150,
+                }}
+                key={index}
+                className={
+                  differenceInDays === 0
+                    ? styles.highlightedCardToday
+                    : styles.normalCard
+                }
+              >
+                <CardMedia
+                  component="img"
+                  alt="wastes symbol"
+                  height="150"
+                  image={
+                    wasteType === "Makulatura"
+                      ? paperWasteImage
+                      : wasteType === "Plastik"
+                      ? plasticWasteImage
+                      : wasteType === "Szklo"
+                      ? glassWasteImage
+                      : allWasted
+                  }
+                />
+                <CardContent sx={{ maxWidth: 145 }}>
+                  <Typography gutterBottom variant="h6" component="div">
+                    {city}
+                  </Typography>
+                  <Typography variant="body1" color="text.primary">
+                    Typ odpadów: {wasteType}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Data odbioru: {date.toLocaleDateString()}
+                  </Typography>
+                  <Typography variant="body2" color="text.primary">
+                    {differenceInDays === 0 ? (
+                      <h3>Odbiór już dzisiaj.</h3>
+                    ) : differenceInDays === 1 ? (
+                      <h3>Odbiór już jutro.</h3>
+                    ) : (
+                      <h4>Odbiór za {differenceInDays} dni.</h4>
+                    )}
+                  </Typography>
+                </CardContent>
+              </Card>
+            )
+          )}
+        </div>
+      </Modal>
     </>
   );
 };
