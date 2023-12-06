@@ -16,18 +16,19 @@
 
 .centerContainer {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: left;
   align-items: center;
   height: 100vh;
+  padding-left: 300px;
 }
 
 .highlightedCardToday {
-  border: 10px solid rgb(33, 230, 33);
+  border: 10px solid #fbfefb;
 }
 
 .normalCard {
-  border: 10px solid rgb(33, 36, 230);
+  border: 10px solid #8b9192;
 }
 
 .modalContainer {
@@ -35,7 +36,6 @@
   align-items: center;
   justify-content: center;
   position: fixed;
-  background-color: rgba(166, 190, 174, 0.3);
 }
 
 .modalContent {
