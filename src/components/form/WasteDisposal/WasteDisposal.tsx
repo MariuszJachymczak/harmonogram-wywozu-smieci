@@ -7,10 +7,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import allWasted from "../../../assets/background/paula-vermeulen-_f2m3mEkaaU-unsplash.jpg";
-import paperWasteImage from "../../../assets/paper.webp";
-import plasticWasteImage from "../../../assets/plastic.webp";
-import glassWasteImage from "../../../assets/glass.webp";
+import paperWasteImage from "../../../assets/garbagecan.png";
 import {
   Button,
   Modal,
@@ -64,6 +61,19 @@ const WasteDisposal: React.FC = () => {
     setUpcomingWasteCollections(filteredData);
   }, [currentMonth, selectedCity]);
 
+  const getWasteTypeColor = (wasteType: string) => {
+    switch (wasteType) {
+      case "Szklo":
+        return "#0EB05C";
+      case "Plastik":
+        return "#EDDEA4";
+      case "Makulatura":
+        return "#0BA9B7";
+      default:
+        return "black";
+    }
+  };
+
   return (
     <>
       <div className={styles.img}>
@@ -73,9 +83,7 @@ const WasteDisposal: React.FC = () => {
               <InputLabel
                 sx={{
                   fontWeight: "bold",
-                  fontSize: "20px",
                 }}
-                size="small"
               >
                 Wybierz Miasto
               </InputLabel>
@@ -120,7 +128,7 @@ const WasteDisposal: React.FC = () => {
                   borderRadius: "16px",
                   flex: 1,
                   flexBasis: 150,
-                  backgroundColor: "grey",
+                  backgroundColor: getWasteTypeColor(wasteType),
                 }}
                 key={index}
                 className={
@@ -133,21 +141,19 @@ const WasteDisposal: React.FC = () => {
                   component="img"
                   alt="wastes symbol"
                   height="150"
-                  image={
-                    wasteType === "Makulatura"
-                      ? paperWasteImage
-                      : wasteType === "Plastik"
-                      ? plasticWasteImage
-                      : wasteType === "Szklo"
-                      ? glassWasteImage
-                      : allWasted
-                  }
+                  image={paperWasteImage}
                 />
                 <CardContent sx={{ maxWidth: 145 }}>
                   <Typography gutterBottom variant="h6" component="div">
                     {city}
                   </Typography>
-                  <Typography variant="body1" color="text.primary">
+                  <Typography
+                    variant="body1"
+                    color="text.primary"
+                    sx={{
+                      fontWeight: "bold",
+                    }}
+                  >
                     Typ odpadów: {wasteType}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">

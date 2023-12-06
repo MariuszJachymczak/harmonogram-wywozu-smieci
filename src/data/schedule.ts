@@ -20,7 +20,7 @@ const schedule: ScheduleType = {
       Szklo: ["29"],
     },
     grudzien: {
-      Plastik: ["11", "17"],
+      Plastik: ["6", "11", "17"],
       Makulatura: ["19"],
       Szklo: ["31"],
     },
