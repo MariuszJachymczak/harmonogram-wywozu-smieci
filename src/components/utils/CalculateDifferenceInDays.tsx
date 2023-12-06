@@ -1,6 +1,6 @@
 import { differenceInDays, startOfDay } from "date-fns";
-import schedule from "../../../data/schedule";
-import monthNames from "../../../data/months";
+import schedule from "../../data/schedule";
+import monthNames from "../../data/months";
 
 const calculateDifferencesInDays = () => {
   const today = startOfDay(new Date());

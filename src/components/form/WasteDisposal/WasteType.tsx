@@ -1,35 +1,36 @@
-import React from "react";
-import { parse, isSameDay } from "date-fns";
-import monthNames from "../../../data/months";
+// import React from "react";
+// import { parse, isSameDay } from "date-fns";
+// import monthNames from "../../../data/months";
 
-interface WasteTypeProps {
-  wasteType: string;
-  dates: string[];
-  month: string;
-  year: string;
-}
+// interface WasteTypeProps {
+//   wasteType: string;
+//   dates: string[];
+//   month: string;
+//   year: string;
+// }
 
-const checkIfDateIsToday = (dates: string[], month: string, year: string) => {
-  const monthIndex = monthNames[month.toLowerCase()];
+// const checkIfDateIsToday = (dates: string[], month: string, year: string) => {
+//   const monthIndex = monthNames[month.toLowerCase()];
 
-  return dates.some((dateString) => {
-    const date = parse(
-      dateString,
-      "dd",
-      new Date(parseInt(year, 10), monthIndex)
-    );
-    return isSameDay(date, new Date());
-  });
-};
+//   return dates.some((dateString) => {
+//     const date = parse(
+//       dateString,
+//       "dd",
+//       new Date(parseInt(year, 10), monthIndex)
+//     );
+//     return isSameDay(date, new Date());
+//   });
+// };
 
-const WasteType: React.FC<WasteTypeProps> = ({
-  wasteType,
-  dates,
-  month,
-  year,
-}) => {
-  const isToday = checkIfDateIsToday(dates, month, year);
-  return isToday ? <p>{wasteType}</p> : null;
-};
+// const WasteType: React.FC<WasteTypeProps> = ({
+//   wasteType,
+//   dates,
+//   month,
+//   year,
+// }) => {
+//   const isToday = checkIfDateIsToday(dates, month, year);
+//   return isToday ? <p>{wasteType}</p> : null;
+// };
 
-export default WasteType;
+// export default WasteType;
+export {};
