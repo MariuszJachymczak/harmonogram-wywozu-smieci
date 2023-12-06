@@ -60,7 +60,7 @@ const WasteDisposal: React.FC = () => {
         (format(date, "MMMM", { locale: pl }).toLowerCase() === currentMonth ||
           format(date, "MMMM", { locale: pl }).toLowerCase() === nextMonthName)
     );
-
+    filteredData.sort((a, b) => a.differenceInDays - b.differenceInDays);
     setUpcomingWasteCollections(filteredData);
   }, [currentMonth, selectedCity]);
 
@@ -120,6 +120,7 @@ const WasteDisposal: React.FC = () => {
                   borderRadius: "16px",
                   flex: 1,
                   flexBasis: 150,
+                  backgroundColor: "grey",
                 }}
                 key={index}
                 className={
