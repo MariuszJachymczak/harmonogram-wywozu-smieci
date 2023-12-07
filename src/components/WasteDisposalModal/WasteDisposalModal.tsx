@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button, Grid, Modal } from "@mui/material";
+import { Button, Grid, Modal } from "@mui/material";
 import WasteCollectionCard from "../WasteCollectionCard/WasteCollectionCard";
 import styles from "../styling/WasteDisposal.module.scss";
 
