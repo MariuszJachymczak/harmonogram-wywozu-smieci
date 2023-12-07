@@ -2,13 +2,14 @@ import React from "react";
 import { Card, CardMedia, CardContent, Typography } from "@mui/material";
 import paperWasteImage from "../../assets/garbagecan.png";
 import styles from "../styling/WasteDisposal.module.scss";
+import WasteTypeColor from "../utils/WasteTypeColor";
 
 interface WasteCollectionCardProps {
   city: string;
   wasteType: string;
   date: Date;
   differenceInDays: number;
-  getWasteTypeColor: (wasteType: string) => string;
+  // getWasteTypeColor: (wasteType: string) => string;
 }
 
 const WasteCollectionCard: React.FC<WasteCollectionCardProps> = ({
@@ -16,7 +17,7 @@ const WasteCollectionCard: React.FC<WasteCollectionCardProps> = ({
   wasteType,
   date,
   differenceInDays,
-  getWasteTypeColor,
+  // getWasteTypeColor,
 }) => (
   <Card
     sx={{
@@ -25,7 +26,7 @@ const WasteCollectionCard: React.FC<WasteCollectionCardProps> = ({
       borderRadius: "16px",
       flex: 1,
       flexBasis: 150,
-      backgroundColor: getWasteTypeColor(wasteType),
+      backgroundColor: WasteTypeColor(wasteType),
     }}
     className={
       differenceInDays === 0 ? styles.highlightedCardToday : styles.normalCard

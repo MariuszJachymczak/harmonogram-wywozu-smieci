@@ -14,14 +14,12 @@ interface WasteDisposalModalProps {
   isOpen: boolean;
   onClose: () => void;
   wasteCollections: WasteCollection[];
-  getWasteTypeColor: (wasteType: string) => string;
 }
 
 const WasteDisposalModal: React.FC<WasteDisposalModalProps> = ({
   isOpen,
   onClose,
   wasteCollections,
-  getWasteTypeColor,
 }) => (
   <Modal open={isOpen} onClose={onClose} className={styles.modalContainer}>
     <div className={styles.modalContent}>
@@ -32,7 +30,7 @@ const WasteDisposalModal: React.FC<WasteDisposalModalProps> = ({
           wasteType={collection.wasteType}
           date={collection.date}
           differenceInDays={collection.differenceInDays}
-          getWasteTypeColor={getWasteTypeColor}
+          // getWasteTypeColor={getWasteTypeColor}
         />
       ))}
     </div>
