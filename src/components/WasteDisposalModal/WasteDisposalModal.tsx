@@ -30,7 +30,6 @@ const WasteDisposalModal: React.FC<WasteDisposalModalProps> = ({
           wasteType={collection.wasteType}
           date={collection.date}
           differenceInDays={collection.differenceInDays}
-          // getWasteTypeColor={getWasteTypeColor}
         />
       ))}
     </div>

@@ -9,7 +9,6 @@ interface WasteCollectionCardProps {
   wasteType: string;
   date: Date;
   differenceInDays: number;
-  // getWasteTypeColor: (wasteType: string) => string;
 }
 
 const WasteCollectionCard: React.FC<WasteCollectionCardProps> = ({
@@ -17,7 +16,6 @@ const WasteCollectionCard: React.FC<WasteCollectionCardProps> = ({
   wasteType,
   date,
   differenceInDays,
-  // getWasteTypeColor,
 }) => (
   <Card
     sx={{
@@ -39,7 +37,12 @@ const WasteCollectionCard: React.FC<WasteCollectionCardProps> = ({
       image={paperWasteImage}
     />
     <CardContent sx={{ maxWidth: 145 }}>
-      <Typography gutterBottom variant="h6" component="div">
+      <Typography
+        gutterBottom
+        variant="h6"
+        component="div"
+        sx={{ fontWeight: "bold" }}
+      >
         {city}
       </Typography>
       <Typography
@@ -48,13 +51,14 @@ const WasteCollectionCard: React.FC<WasteCollectionCardProps> = ({
         sx={{
           fontWeight: "bold",
         }}
+        gutterBottom
       >
-        Typ odpadów: {wasteType}
+        {wasteType}
       </Typography>
-      <Typography variant="body2" color="text.secondary">
+      <Typography variant="body2" color="text.secondary" mt={2}>
         Data odbioru: {date.toLocaleDateString()}
       </Typography>
-      <Typography variant="body2" color="text.primary">
+      <Typography variant="body1" color="text.primary" component="div" mt={2}>
         {differenceInDays === 0 ? (
           <h3>Odbiór już dzisiaj.</h3>
         ) : differenceInDays === 1 ? (
