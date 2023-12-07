@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal } from "@mui/material";
+import { Box, Grid, Modal } from "@mui/material";
 import WasteCollectionCard from "../WasteCollectionCard/WasteCollectionCard";
 import styles from "../styling/WasteDisposal.module.scss";
 
@@ -21,19 +21,28 @@ const WasteDisposalModal: React.FC<WasteDisposalModalProps> = ({
   onClose,
   wasteCollections,
 }) => (
-  <Modal open={isOpen} onClose={onClose} className={styles.modalContainer}>
-    <div className={styles.modalContent}>
-      {wasteCollections.map((collection, index) => (
-        <WasteCollectionCard
-          key={index}
-          city={collection.city}
-          wasteType={collection.wasteType}
-          date={collection.date}
-          differenceInDays={collection.differenceInDays}
-        />
-      ))}
-    </div>
-  </Modal>
+  <>
+    <Modal open={isOpen} onClose={onClose} className={styles.modalContainer}>
+      <Grid
+        container
+        spacing={4}
+        justifyContent={"center"}
+        alignContent="center"
+        style={{ height: "100%" }}
+      >
+        {wasteCollections.map((collection, index) => (
+          <Grid item xs={12} sm={6} md={4} lg={2} key={index}>
+            <WasteCollectionCard
+              city={collection.city}
+              wasteType={collection.wasteType}
+              date={collection.date}
+              differenceInDays={collection.differenceInDays}
+            />
+          </Grid>
+        ))}
+      </Grid>
+    </Modal>
+  </>
 );
 
 export default WasteDisposalModal;

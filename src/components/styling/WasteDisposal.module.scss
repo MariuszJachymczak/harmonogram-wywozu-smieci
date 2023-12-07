@@ -31,21 +31,6 @@
   border: 10px solid #8b9192;
 }
 
-.modalContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-}
-
-.modalContent {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  min-width: 200px;
-  max-width: 80%;
-  height: auto;
-}
 .card {
   margin: 2;
   max-width: 200;
