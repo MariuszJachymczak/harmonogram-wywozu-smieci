@@ -8,7 +8,6 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import schedule from "../data/schedule";
 import SelectCity from "./SelectCity/SelectCity";
 import WasteDisposalModal from "./WasteDisposalModal/WasteDisposalModal";
-import wasteTypeColors from "../data/WasteTypeColors";
 
 interface WasteCollection {
   city: string;
@@ -52,19 +51,6 @@ const WasteDisposal: React.FC = () => {
     setUpcomingWasteCollections(filteredData);
   }, [currentMonth, selectedCity]);
 
-  const getWasteTypeColor = (wasteType: string) => {
-    switch (wasteType) {
-      case "Szklo":
-        return wasteTypeColors.glass;
-      case "Plastik":
-        return wasteTypeColors.plasticWaste;
-      case "Makulatura":
-        return wasteTypeColors.paperWaste;
-      default:
-        return "black";
-    }
-  };
-
   return (
     <>
       <div className={styles.img}>
@@ -89,7 +75,6 @@ const WasteDisposal: React.FC = () => {
         isOpen={isModalOpen}
         onClose={toggleModal}
         wasteCollections={upcomingWasteCollections}
-        getWasteTypeColor={getWasteTypeColor}
       />
     </>
   );

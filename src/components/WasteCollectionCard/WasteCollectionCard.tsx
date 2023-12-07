@@ -2,13 +2,13 @@ import React from "react";
 import { Card, CardMedia, CardContent, Typography } from "@mui/material";
 import paperWasteImage from "../../assets/garbagecan.png";
 import styles from "../styling/WasteDisposal.module.scss";
+import WasteTypeColor from "../utils/WasteTypeColor";
 
 interface WasteCollectionCardProps {
   city: string;
   wasteType: string;
   date: Date;
   differenceInDays: number;
-  getWasteTypeColor: (wasteType: string) => string;
 }
 
 const WasteCollectionCard: React.FC<WasteCollectionCardProps> = ({
@@ -16,7 +16,6 @@ const WasteCollectionCard: React.FC<WasteCollectionCardProps> = ({
   wasteType,
   date,
   differenceInDays,
-  getWasteTypeColor,
 }) => (
   <Card
     sx={{
@@ -25,7 +24,7 @@ const WasteCollectionCard: React.FC<WasteCollectionCardProps> = ({
       borderRadius: "16px",
       flex: 1,
       flexBasis: 150,
-      backgroundColor: getWasteTypeColor(wasteType),
+      backgroundColor: WasteTypeColor(wasteType),
     }}
     className={
       differenceInDays === 0 ? styles.highlightedCardToday : styles.normalCard
@@ -38,7 +37,12 @@ const WasteCollectionCard: React.FC<WasteCollectionCardProps> = ({
       image={paperWasteImage}
     />
     <CardContent sx={{ maxWidth: 145 }}>
-      <Typography gutterBottom variant="h6" component="div">
+      <Typography
+        gutterBottom
+        variant="h6"
+        component="div"
+        sx={{ fontWeight: "bold" }}
+      >
         {city}
       </Typography>
       <Typography
@@ -47,13 +51,14 @@ const WasteCollectionCard: React.FC<WasteCollectionCardProps> = ({
         sx={{
           fontWeight: "bold",
         }}
+        gutterBottom
       >
-        Typ odpadów: {wasteType}
+        {wasteType}
       </Typography>
-      <Typography variant="body2" color="text.secondary">
+      <Typography variant="body2" color="text.secondary" mt={2}>
         Data odbioru: {date.toLocaleDateString()}
       </Typography>
-      <Typography variant="body2" color="text.primary">
+      <Typography variant="body1" color="text.primary" component="div" mt={2}>
         {differenceInDays === 0 ? (
           <h3>Odbiór już dzisiaj.</h3>
         ) : differenceInDays === 1 ? (

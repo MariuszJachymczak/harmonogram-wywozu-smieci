@@ -23,6 +23,13 @@
   padding-left: 300px;
 }
 
+// .centerCard {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   height: 100%;
+// }
+
 .highlightedCardToday {
   border: 10px solid #fbfefb;
 }
@@ -31,23 +38,14 @@
   border: 10px solid #8b9192;
 }
 
-.modalContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-}
-
-.modalContent {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  min-width: 200px;
-  max-width: 80%;
-  height: auto;
-}
 .card {
   margin: 2;
   max-width: 200;
   border-radius: "16px";
+}
+
+.closeButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
