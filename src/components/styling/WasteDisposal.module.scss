@@ -23,6 +23,13 @@
   padding-left: 300px;
 }
 
+// .centerCard {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   height: 100%;
+// }
+
 .highlightedCardToday {
   border: 10px solid #fbfefb;
 }
@@ -35,4 +42,10 @@
   margin: 2;
   max-width: 200;
   border-radius: "16px";
+}
+
+.closeButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
