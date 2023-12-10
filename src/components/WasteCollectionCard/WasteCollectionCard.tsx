@@ -50,6 +50,8 @@ const WasteCollectionCard: React.FC<WasteCollectionCardProps> = ({
         color="text.primary"
         sx={{
           fontWeight: "bold",
+          textAlign: "center",
+          margin: "auto",
         }}
         gutterBottom
       >
