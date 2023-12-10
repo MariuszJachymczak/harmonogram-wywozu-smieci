@@ -28,7 +28,8 @@ const WasteDisposalModal: React.FC<WasteDisposalModalProps> = ({
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          height: "90%",
+          height: "100%",
+          position: "relative",
         }}
       >
         <Grid
@@ -38,7 +39,7 @@ const WasteDisposalModal: React.FC<WasteDisposalModalProps> = ({
           style={{ flexWrap: "wrap", maxWidth: "100%" }}
         >
           {wasteCollections.map((collection, index) => (
-            <Grid item xs={12} sm={6} md={6} lg={2} key={index}>
+            <Grid item xs={12} sm={6} md={6} lg={3} key={index}>
               <WasteCollectionCard
                 city={collection.city}
                 wasteType={collection.wasteType}
@@ -49,10 +50,10 @@ const WasteDisposalModal: React.FC<WasteDisposalModalProps> = ({
           ))}
         </Grid>
         <Button
-          className={styles.closeButton}
           onClick={onClose}
           variant="contained"
           color="primary"
+          sx={{ position: "absolute", top: 16, right: 16, zIndex: 99 }}
         >
           Zamknij
         </Button>
