@@ -11,6 +11,16 @@ interface WasteCollectionCardProps {
   differenceInDays: number;
 }
 
+const getDifferenceInDaysMessage = (differenceInDays: number) => {
+  if (differenceInDays === 0) {
+    return "Odbiór już dzisiaj.";
+  } else if (differenceInDays === 1) {
+    return "Odbiór jutro.";
+  } else {
+    return `Odbiór za ${differenceInDays} dni.`;
+  }
+};
+
 const WasteCollectionCard: React.FC<WasteCollectionCardProps> = ({
   city,
   wasteType,
@@ -61,13 +71,7 @@ const WasteCollectionCard: React.FC<WasteCollectionCardProps> = ({
         Data odbioru: {date.toLocaleDateString()}
       </Typography>
       <Typography variant="body1" color="text.primary" component="div" mt={2}>
-        {differenceInDays === 0 ? (
-          <h3>Odbiór już dzisiaj.</h3>
-        ) : differenceInDays === 1 ? (
-          <h3>Odbiór już jutro.</h3>
-        ) : (
-          <h4>Odbiór za {differenceInDays} dni.</h4>
-        )}
+        {getDifferenceInDaysMessage(differenceInDays)}
       </Typography>
     </CardContent>
   </Card>

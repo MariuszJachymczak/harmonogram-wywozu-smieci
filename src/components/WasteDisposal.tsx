@@ -20,8 +20,9 @@ const WasteDisposal: React.FC = () => {
   const [upcomingWasteCollections, setUpcomingWasteCollections] = useState<
     WasteCollection[]
   >([]);
+  const DEFAULT_CITY = "Wybierz Miasto";
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedCity, setSelectedCity] = useState("Wybierz Miasto");
+  const [selectedCity, setSelectedCity] = useState<string>(DEFAULT_CITY);
   const [cities, setCities] = useState<string[]>([]);
 
   const toggleModal = () => {
@@ -65,7 +66,7 @@ const WasteDisposal: React.FC = () => {
             variant="outlined"
             onClick={toggleModal}
             endIcon={<ArrowForwardIcon />}
-            disabled={selectedCity === "Wybierz Miasto"}
+            disabled={selectedCity === DEFAULT_CITY}
           >
             Odpady Selektywne
           </Button>
