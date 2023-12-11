@@ -51,7 +51,7 @@ const WasteDisposal: React.FC = () => {
         (format(date, "MMMM", { locale: pl }).toLowerCase() === currentMonth ||
           format(date, "MMMM", { locale: pl }).toLowerCase() === nextMonthName)
     );
-  }, [calculateDifferencesInDays, selectedCity, currentMonth]);
+  }, [selectedCity, currentMonth]);
 
   useEffect(() => {
     let filteredData = getFilteredData();
