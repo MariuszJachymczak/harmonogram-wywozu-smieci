@@ -57,7 +57,7 @@ const WasteDisposal: React.FC = () => {
     let filteredData = getFilteredData();
     filteredData.sort((a, b) => a.differenceInDays - b.differenceInDays);
     setUpcomingWasteCollections(filteredData);
-  }, [currentMonth, selectedCity]);
+  }, [currentMonth, selectedCity, getFilteredData]);
 
   return (
     <>
