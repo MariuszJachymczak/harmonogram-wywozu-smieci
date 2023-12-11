@@ -60,7 +60,7 @@ const WasteDisposal: React.FC = () => {
         a.differenceInDays - b.differenceInDays
     );
     setUpcomingWasteCollections(filteredData);
-  }, [currentMonth, selectedCity]);
+  }, [currentMonth, selectedCity, getFilteredData]);
 
   useEffect(() => {
     let filteredData = getFilteredData();
@@ -69,7 +69,7 @@ const WasteDisposal: React.FC = () => {
         a.differenceInDays - b.differenceInDays
     );
     setUpcomingWasteCollections(filteredData);
-  }, [currentMonth, selectedCity, getFilteredData]);
+  }, [currentMonth, selectedCity]);
 
   return (
     <>
