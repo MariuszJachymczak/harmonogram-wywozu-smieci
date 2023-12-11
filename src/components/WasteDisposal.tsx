@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import calculateDifferencesInDays from "./utils/CalculateDifferenceInDays";
 import styles from "./styling/WasteDisposal.module.scss";
 import { format } from "date-fns";
@@ -38,7 +38,7 @@ const WasteDisposal: React.FC = () => {
     setCities(Object.keys(schedule));
   }, []);
 
-  const getFilteredData = () => {
+  const getFilteredData = useCallback(() => {
     const now = new Date();
     const nextMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1);
     const nextMonthName = format(nextMonth, "MMMM", {
@@ -51,11 +51,23 @@ const WasteDisposal: React.FC = () => {
         (format(date, "MMMM", { locale: pl }).toLowerCase() === currentMonth ||
           format(date, "MMMM", { locale: pl }).toLowerCase() === nextMonthName)
     );
-  };
+  }, [calculateDifferencesInDays, selectedCity, currentMonth]);
 
   useEffect(() => {
     let filteredData = getFilteredData();
-    filteredData.sort((a, b) => a.differenceInDays - b.differenceInDays);
+    filteredData.sort(
+      (a: WasteCollection, b: WasteCollection) =>
+        a.differenceInDays - b.differenceInDays
+    );
+    setUpcomingWasteCollections(filteredData);
+  }, [currentMonth, selectedCity]);
+
+  useEffect(() => {
+    let filteredData = getFilteredData();
+    filteredData.sort(
+      (a: WasteCollection, b: WasteCollection) =>
+        a.differenceInDays - b.differenceInDays
+    );
     setUpcomingWasteCollections(filteredData);
   }, [currentMonth, selectedCity, getFilteredData]);
 
