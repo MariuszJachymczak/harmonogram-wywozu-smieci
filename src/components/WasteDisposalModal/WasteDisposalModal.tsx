@@ -34,7 +34,7 @@ const WasteDisposalModal: React.FC<WasteDisposalModalProps> = ({
       >
         <Grid
           container
-          spacing={4}
+          spacing={6}
           justifyContent={"center"}
           style={{ flexWrap: "wrap", maxWidth: "100%" }}
         >

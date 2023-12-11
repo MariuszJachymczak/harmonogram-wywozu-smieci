@@ -5,6 +5,9 @@
   width: 100%;
   min-height: 100vh;
   filter: brightness(0.7);
+  @media (max-width: 300px) {
+    height: 100%;
+  }
 }
 
 .buttonContainer {
@@ -21,6 +24,10 @@
   align-items: center;
   height: 100vh;
   padding-left: 300px;
+
+  @media (max-width: 768px) {
+    padding-left: 20px;
+  }
 }
 
 .highlightedCardToday {
