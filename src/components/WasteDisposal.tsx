@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import calculateDifferencesInDays from "./utils/CalculateDifferenceInDays";
 import styles from "./styling/WasteDisposal.module.scss";
 import { format } from "date-fns";
@@ -20,33 +20,41 @@ const WasteDisposal: React.FC = () => {
   const [upcomingWasteCollections, setUpcomingWasteCollections] = useState<
     WasteCollection[]
   >([]);
+  const DEFAULT_CITY = "Wybierz Miasto";
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedCity, setSelectedCity] = useState("Wybierz Miasto");
+  const [selectedCity, setSelectedCity] = useState<string>(DEFAULT_CITY);
   const [cities, setCities] = useState<string[]>([]);
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
 
-  const currentMonth = format(new Date(), "MMMM", { locale: pl }).toLowerCase();
+  const currentMonth = useMemo(
+    () => format(new Date(), "MMMM", { locale: pl }).toLowerCase(),
+    []
+  );
 
   useEffect(() => {
     setCities(Object.keys(schedule));
   }, []);
 
-  useEffect(() => {
+  const getFilteredData = () => {
     const now = new Date();
     const nextMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1);
     const nextMonthName = format(nextMonth, "MMMM", {
       locale: pl,
     }).toLowerCase();
 
-    let filteredData = calculateDifferencesInDays().filter(
+    return calculateDifferencesInDays().filter(
       ({ city, date }) =>
         city === selectedCity &&
         (format(date, "MMMM", { locale: pl }).toLowerCase() === currentMonth ||
           format(date, "MMMM", { locale: pl }).toLowerCase() === nextMonthName)
     );
+  };
+
+  useEffect(() => {
+    let filteredData = getFilteredData();
     filteredData.sort((a, b) => a.differenceInDays - b.differenceInDays);
     setUpcomingWasteCollections(filteredData);
   }, [currentMonth, selectedCity]);
@@ -65,7 +73,7 @@ const WasteDisposal: React.FC = () => {
             variant="outlined"
             onClick={toggleModal}
             endIcon={<ArrowForwardIcon />}
-            disabled={selectedCity === "Wybierz Miasto"}
+            disabled={selectedCity === DEFAULT_CITY}
           >
             Odpady Selektywne
           </Button>
