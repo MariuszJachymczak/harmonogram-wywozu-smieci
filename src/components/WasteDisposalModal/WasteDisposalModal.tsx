@@ -22,7 +22,12 @@ const WasteDisposalModal: React.FC<WasteDisposalModalProps> = ({
   wasteCollections,
 }) => (
   <>
-    <Modal open={isOpen} onClose={onClose} className={styles.modalContainer}>
+    <Modal
+      open={isOpen}
+      onClose={onClose}
+      className={styles.modalContainer}
+      data-testid="modal"
+    >
       <div
         style={{
           display: "flex",
