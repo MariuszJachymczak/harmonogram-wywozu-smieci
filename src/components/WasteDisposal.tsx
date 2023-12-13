@@ -55,7 +55,7 @@ const WasteDisposal: React.FC = () => {
   return (
     <>
       <div className={styles.img}>
-        <div className={styles.centerContainer}>
+        <div className={styles.centerContainer} data-testid="modal">
           <SelectCity
             cities={cities}
             selectedCity={selectedCity}
@@ -67,6 +67,7 @@ const WasteDisposal: React.FC = () => {
             onClick={toggleModal}
             endIcon={<ArrowForwardIcon />}
             disabled={selectedCity === DEFAULT_CITY}
+            data-testid="toggle-button"
           >
             Odpady Selektywne
           </Button>

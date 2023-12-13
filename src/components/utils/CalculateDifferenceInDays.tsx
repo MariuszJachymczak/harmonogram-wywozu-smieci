@@ -14,7 +14,8 @@ const calculateDifferencesInDays = () => {
 
   Object.entries(schedule).forEach(([city, months]) => {
     Object.entries(months).forEach(([month, wasteTypes]) => {
-      const monthIndex = monthNames[month.toLowerCase()];
+      const monthIndex =
+        monthNames[month.toLowerCase() as keyof typeof monthNames];
       Object.entries(wasteTypes).forEach(([wasteType, dates]) => {
         dates.forEach((dateString) => {
           const wasteDate = startOfDay(

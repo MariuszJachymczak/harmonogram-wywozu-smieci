@@ -13,13 +13,14 @@ const SelectCity: React.FC<SelectCityProps> = ({
   onCityChange,
 }) => (
   <FormControl variant="filled" sx={{ m: 1, minWidth: 200 }}>
-    <InputLabel sx={{ fontWeight: "bold" }}>Wybierz Miasto</InputLabel>
+    <InputLabel sx={{ fontWeight: "bold" }} data-testid="selected-city">
+      Wybierz Miasto
+    </InputLabel>
     <Select
       labelId="city-select-label"
       id="city-select"
       value={selectedCity}
       onChange={(e) => onCityChange(e.target.value)}
-      label="city"
     >
       {cities.map((city, index) => (
         <MenuItem key={index} value={city}>
