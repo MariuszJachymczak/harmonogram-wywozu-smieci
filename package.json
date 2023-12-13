@@ -25,8 +25,9 @@
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
-    "test": "react-app-rewired test",
-    "eject": "react-scripts eject"
+    "test": "react-app-rewired test --watchAll=false",
+    "eject": "react-scripts eject",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -50,6 +51,7 @@
     "css-loader": "^6.8.1",
     "customize-cra": "^1.0.0",
     "eslint": "^8.55.0",
+    "husky": "^8.0.3",
     "react-app-rewired": "^2.2.1",
     "resolve-url-loader": "^5.0.0",
     "sass": "^1.69.5",
