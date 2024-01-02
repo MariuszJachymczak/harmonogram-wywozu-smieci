@@ -5,25 +5,21 @@
   width: 100%;
   min-height: 100vh;
   filter: brightness(0.7);
-  @media (max-width: 300px) {
-    height: 100%;
-  }
 }
 
 .buttonContainer {
   display: flex;
   justify-content: center;
-  align-items: bottom;
+  align-items: center;
   height: 100vh;
 }
 
 .centerContainer {
   display: flex;
   flex-direction: row;
-  justify-content: left;
+  justify-content: center;
   align-items: center;
   height: 100vh;
-  padding-left: 300px;
 
   @media (max-width: 768px) {
     padding-left: 20px;
@@ -36,10 +32,4 @@
 
 .normalCard {
   border: 10px solid #8b9192;
-}
-
-.card {
-  margin: 2;
-  max-width: 200;
-  border-radius: "16px";
 }
