@@ -26,55 +26,62 @@ const WasteCollectionCard: React.FC<WasteCollectionCardProps> = ({
   wasteType,
   date,
   differenceInDays,
-}) => (
-  <Card
-    sx={{
-      margin: 2,
-      maxWidth: 200,
-      borderRadius: "16px",
-      flex: 1,
-      flexBasis: 150,
-      backgroundColor: WasteTypeColor(wasteType),
-    }}
-    className={
-      differenceInDays === 0 ? styles.highlightedCardToday : styles.normalCard
-    }
-  >
-    <CardMedia
-      component="img"
-      alt="wastes symbol"
-      height="150"
-      image={paperWasteImage}
-    />
-    <CardContent sx={{ maxWidth: 145 }}>
-      <Typography
-        gutterBottom
-        variant="h6"
-        component="div"
-        sx={{ fontWeight: "bold" }}
-      >
-        {city}
-      </Typography>
-      <Typography
-        variant="body1"
-        color="text.primary"
-        sx={{
-          fontWeight: "bold",
-          textAlign: "center",
-          margin: "auto",
-        }}
-        gutterBottom
-      >
-        {wasteType}
-      </Typography>
-      <Typography variant="body2" color="text.secondary" mt={2}>
-        Data odbioru: {date.toLocaleDateString()}
-      </Typography>
-      <Typography variant="body1" color="text.primary" component="div" mt={2}>
-        {getDifferenceInDaysMessage(differenceInDays)}
-      </Typography>
-    </CardContent>
-  </Card>
-);
+}) => {
+  if (differenceInDays >= 15) {
+    return null;
+  }
+
+  return (
+    <Card
+      sx={{
+        margin: 2,
+        maxWidth: 200,
+        borderRadius: "12px",
+        flex: 1,
+        flexBasis: "150vh",
+        backgroundColor: WasteTypeColor(wasteType),
+      }}
+      className={
+        differenceInDays === 0 ? styles.highlightedCardToday : styles.normalCard
+      }
+    >
+      <CardMedia
+        component="img"
+        alt="wastes symbol"
+        height="140"
+        image={paperWasteImage}
+        className={styles.cardMedia}
+      />
+      <CardContent sx={{ maxWidth: 145 }}>
+        <Typography
+          gutterBottom
+          variant="h6"
+          component="div"
+          sx={{ fontWeight: "bold" }}
+        >
+          {city}
+        </Typography>
+        <Typography
+          variant="body1"
+          color="text.primary"
+          sx={{
+            fontWeight: "bold",
+            textAlign: "center",
+            margin: "auto",
+          }}
+          gutterBottom
+        >
+          {wasteType}
+        </Typography>
+        <Typography variant="body2" color="text.secondary" mt={2}>
+          Data odbioru: {date.toLocaleDateString()}
+        </Typography>
+        <Typography variant="body1" color="text.primary" component="div" mt={2}>
+          {getDifferenceInDaysMessage(differenceInDays)}
+        </Typography>
+      </CardContent>
+    </Card>
+  );
+};
 
 export default WasteCollectionCard;
