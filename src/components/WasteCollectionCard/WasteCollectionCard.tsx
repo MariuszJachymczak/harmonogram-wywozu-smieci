@@ -32,6 +32,7 @@ const WasteCollectionCard: React.FC<WasteCollectionCardProps> = ({
   }
 
   return (
+<>
     <Card
       sx={{
         margin: 2,
@@ -81,6 +82,7 @@ const WasteCollectionCard: React.FC<WasteCollectionCardProps> = ({
         </Typography>
       </CardContent>
     </Card>
+    </>
   );
 };
 

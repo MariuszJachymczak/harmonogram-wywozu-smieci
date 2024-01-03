@@ -69,7 +69,7 @@ const WasteDisposal: React.FC = () => {
             disabled={selectedCity === DEFAULT_CITY}
             data-testid="toggle-button"
           >
-            Odpady Selektywne
+           Wybierz
           </Button>
         </div>
       </div>
