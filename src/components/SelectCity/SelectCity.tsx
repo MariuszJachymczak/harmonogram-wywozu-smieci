@@ -22,6 +22,7 @@ const SelectCity: React.FC<SelectCityProps> = ({
       value={selectedCity}
       onChange={(e) => onCityChange(e.target.value)}
     >
+       <MenuItem value="Wybierz Miasto">Wybierz Miasto</MenuItem>
       {cities.map((city, index) => (
         <MenuItem key={index} value={city}>
           {city}
