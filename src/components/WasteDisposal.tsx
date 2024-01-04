@@ -59,18 +59,13 @@ const WasteDisposal: React.FC = () => {
           <SelectCity
             cities={cities}
             selectedCity={selectedCity}
-            onCityChange={setSelectedCity}
+            onCityChange={(city) => {
+              setSelectedCity(city);
+              if (city !== DEFAULT_CITY) {
+                toggleModal();
+              }
+            }}
           />
-          <Button
-            color="info"
-            variant="outlined"
-            onClick={toggleModal}
-            endIcon={<ArrowForwardIcon />}
-            disabled={selectedCity === DEFAULT_CITY}
-            data-testid="toggle-button"
-          >
-           Wybierz
-          </Button>
         </div>
       </div>
       <WasteDisposalModal
