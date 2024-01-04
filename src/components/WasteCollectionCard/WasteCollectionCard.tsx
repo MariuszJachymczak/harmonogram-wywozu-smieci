@@ -56,7 +56,6 @@ const WasteCollectionCard: React.FC<WasteCollectionCardProps> = ({
       <CardContent sx={{ maxWidth: 145 }}>
         <Typography
           gutterBottom
-          variant="h6"
           component="div"
           sx={{ fontWeight: "bold" }}
         >
