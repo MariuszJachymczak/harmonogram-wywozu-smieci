@@ -3,8 +3,6 @@ import calculateDifferencesInDays from "./utils/CalculateDifferenceInDays";
 import styles from "./styling/WasteDisposal.module.scss";
 import { format } from "date-fns";
 import { pl } from "date-fns/locale";
-import { Button } from "@mui/material";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import schedule from "../data/schedule";
 import SelectCity from "./SelectCity/SelectCity";
 import WasteDisposalModal from "./WasteDisposalModal/WasteDisposalModal";
@@ -59,18 +57,13 @@ const WasteDisposal: React.FC = () => {
           <SelectCity
             cities={cities}
             selectedCity={selectedCity}
-            onCityChange={setSelectedCity}
+            onCityChange={(city) => {
+              setSelectedCity(city);
+              if (city !== DEFAULT_CITY) {
+                toggleModal();
+              }
+            }}
           />
-          <Button
-            color="info"
-            variant="outlined"
-            onClick={toggleModal}
-            endIcon={<ArrowForwardIcon />}
-            disabled={selectedCity === DEFAULT_CITY}
-            data-testid="toggle-button"
-          >
-           Wybierz
-          </Button>
         </div>
       </div>
       <WasteDisposalModal

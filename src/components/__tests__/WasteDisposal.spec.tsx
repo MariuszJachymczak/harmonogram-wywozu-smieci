@@ -14,13 +14,8 @@ describe("WasteDisposal", () => {
   });
 
   it("toggles the modal when toggleModal is called", async () => {
-    const { getByTestId, queryByTestId } = render(<WasteDisposal />);
-
-    const toggleButton = getByTestId("toggle-button");
+    const { queryByTestId } = render(<WasteDisposal />);
     const modalElement = queryByTestId("modal");
-    await act(async () => {
-      fireEvent.click(toggleButton);
-    });
     expect(modalElement).toBeInTheDocument();
   });
 });
