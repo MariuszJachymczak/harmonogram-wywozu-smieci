@@ -29,11 +29,7 @@ const WasteDisposalModal: React.FC<WasteDisposalModalProps> = ({
       data-testid="modal"
     >
       <div>
-        <Grid
-          container
-          spacing={1}
-          justifyContent={"left"}
-        >
+        <Grid container spacing={1} justifyContent={"left"}>
           {wasteCollections.map((collection, index) => (
             <Grid item xs={12} sm={8} md={8} lg={8} key={index}>
               <WasteCollectionCard
@@ -49,7 +45,7 @@ const WasteDisposalModal: React.FC<WasteDisposalModalProps> = ({
           onClick={onClose}
           variant="contained"
           color="primary"
-          size='small'
+          size="small"
           sx={{ position: "absolute", top: 16, right: 5, zIndex: 99 }}
         >
           Zamknij
